@@ -10,10 +10,10 @@ Authors@R: c(
   ))
 Maintainer: The package maintainer <yourself@somewhere.net>
 Description: The redacted package provides a set of utility functions for 
-  redacting and masking sensitive information in text data. This includes 
-  functions for redacting passwords, API keys, and other sensitive information 
-  using regular expressions, as well as a utility function for general pattern 
-  matching and replacement.
+  masking sensitive information in text data. This includes 
+  functions for redacting credit card numbers, phone numbers, and other 
+  sensitive information using regular expressions, as well as a utility function 
+  for general masking.
 License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
