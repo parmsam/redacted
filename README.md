@@ -4,6 +4,8 @@
 # redacted <img src="man/figures/logo.png" align="right" height="139" />
 
 <!-- badges: start -->
+
+[![R-CMD-check](https://github.com/parmsam/redacted/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/parmsam/redacted/actions/workflows/R-CMD-check.yaml)
 <!-- badges: end -->
 
 The goal of redacted is to more easily redact sensitive data in strings.
