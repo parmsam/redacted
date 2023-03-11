@@ -42,7 +42,7 @@ cat(redacted_text)
 ```
 
 It will also redact multiple instances of the sensitive information in
-the
+the string
 
 ``` r
 text <- "My PIN is 1234. Your PIN is 4321."
@@ -86,6 +86,16 @@ text <- "Contact me at john@example.com"
 redacted_text <- redact_pattern(text, pattern = "\\S+@\\S+")
 cat(redacted_text)
 #> Contact me at [REDACTED]
+```
+
+Note that the `redacted_*()`functions are built
+`stringr::str_replace_all()` so you can use them on a vector of strings:
+
+``` r
+text <- c("My PIN is 1234.", "Your PIN is 4321.", "Their PIN is 1111.")
+redacted_text <- redact_pins(text)
+cat(redacted_text)
+#> My PIN is [REDACTED]. Your PIN is [REDACTED]. Their PIN is [REDACTED].
 ```
 
 ## Contributing
