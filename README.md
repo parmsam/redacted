@@ -41,6 +41,59 @@ cat(redacted_text)
 #> Hello, my email address is [REDACTED]. Please don't share it with anyone.
 ```
 
+It will also redact multiple instances of the sensitive information in
+the
+
+``` r
+text <- "My PIN is 1234. Your PIN is 4321."
+redacted_text <- redact_pins(text)
+cat(redacted_text)
+#> My PIN is [REDACTED]. Your PIN is [REDACTED].
+```
+
+Or replace with a custom string using the `replace_with` option
+
+``` r
+text <- "My PIN is 1234. Your PIN is 4321."
+redact_pins(text, replace_with = "[PIN REDACTED]")
+#> [1] "My PIN is [PIN REDACTED]. Your PIN is [PIN REDACTED]."
+cat(redacted_text)
+#> My PIN is [REDACTED]. Your PIN is [REDACTED].
+```
+
+When you pass a single character such as \* to replace_with, the matched
+string will be replaced with asterisks of the same length as the matched
+string
+
+``` r
+text <- "My PIN is 1234. Your PIN is 4321."
+redacted_text <- redact_pins(text, replace_with = "*")
+cat(redacted_text)
+#> My PIN is ****. Your PIN is ****.
+
+text <- "My PIN is 1234. Your PIN is 4321."
+redacted_text <- redact_pins(text, replace_with = "#")
+cat(redacted_text)
+#> My PIN is ####. Your PIN is ####.
+```
+
+You can also use the redact_pattern() function to redact any custom
+pattern from text:
+
+``` r
+# Redact email addresses from a string
+text <- "Contact me at john@example.com"
+redacted_text <- redact_pattern(text, pattern = "\\S+@\\S+")
+cat(redacted_text)
+#> Contact me at [REDACTED]
+```
+
+## Contributing
+
+Contributions are welcome! Please open an issue to report a bug or
+suggest a new feature, or submit a pull request to contribute code
+changes.
+
 ## Credits
 
 - Hex icon created using the [hexmake
