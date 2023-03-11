@@ -78,7 +78,7 @@ cat(redacted_text)
 ```
 
 You can also use the redact_pattern() function to redact any custom
-pattern from text:
+pattern from text
 
 ``` r
 # Redact email addresses from a string
@@ -88,8 +88,21 @@ cat(redacted_text)
 #> Contact me at [REDACTED]
 ```
 
-Note that the `redacted_*()`functions are built
-`stringr::str_replace_all()` so you can use them on a vector of strings:
+The `redact_all()` will attempt to redact using all of the underlying
+`redact_*()` functions or a defined list of functions
+
+``` r
+text <- c("My phone number is 555-555-1234. My email is john@example.com")
+redacted_text <- redact_all(text)
+cat(redacted_text)
+#> My phone number is [REDACTED]. My email is [REDACTED]
+redacted_text <- redact_all(text, redact_funcs = list(redacted::redact_phone_numbers, redacted::redact_ip_addresses))
+cat(redacted_text)
+#> My phone number is [REDACTED]. My email is john@example.com
+```
+
+Note that the `redact_*()`functions are built using
+`stringr::str_replace_all()` so you can use them on a vector of strings
 
 ``` r
 text <- c("My PIN is 1234.", "Your PIN is 4321.", "Their PIN is 1111.")
