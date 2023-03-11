@@ -52,8 +52,8 @@ default_redact_functions <- function() {
   pattern_names <- setdiff(pattern_names, c("redact_all", "redact_pattern"))
   # ensure the redact domains is last
   pattern_names <- c(
-    pattern_names[pattern_names != "redact_domains"],
-    "redact_domains"
+    pattern_names[pattern_names != "redact_website_urls"],
+    "redact_website_urls"
   )
   pattern_functions <- lapply(pattern_names, get)
   names(pattern_functions) <- pattern_names

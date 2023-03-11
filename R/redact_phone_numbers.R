@@ -10,7 +10,6 @@
 #'   `replace_pattern()` function.
 #'
 #' @return A character vector with phone numbers redacted.
-#' @export
 #'
 #' @examples
 #' text <- "My phone number is (123) 456-7890. Please don't share it with anyone."
@@ -18,7 +17,8 @@
 #' cat(redacted_text)
 #'
 #' @importFrom stringr str_replace_all
+#' @export
 redact_phone_numbers <- function(text, replace_with = NULL) {
-  pattern <- "\\b\\(?\\d{3}\\)?[ -]?\\d{3}[ -]?\\d{4}\\b"
+  pattern <- "\\(\\d{3}\\) \\d{3}-\\d{4}|\\d{3}-\\d{3}-\\d{4}|\\d{10}"
   redact_pattern(text, pattern, replace_with)
 }
